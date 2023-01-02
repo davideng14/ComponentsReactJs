@@ -23,14 +23,33 @@ function App() {
   const [bar, setBar] = useState(20);
 
   const handleAsync = async () => {
-    const call = getInfo();
-    const data = await call;
-
-    console.log(data);
+    const data = await getInfo();
+    
+    try {
+      // procesar la data
+      console.log(data);
+    } catch(err) {
+      console.err();
+    }
+    
   } 
 
   //ComponentDidUpdate
   useEffect(() => {
+    getInfo
+  .then(
+    (res) => {
+      //throw new Error('Ooops!');
+      console.log("Resolved: " + res);
+    },
+    (err) => {
+      console.log("Rejected: " + err);
+    }
+  )
+  .catch((err) => {
+    console.log("Problema en lectura de resultado");
+    return "default_value";
+  })
     handleAsync();
   });
 
