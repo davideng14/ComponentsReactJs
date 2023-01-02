@@ -1,8 +1,8 @@
-export default function NewItem() {
+export default function NewItem({ title, summary }) {
     return (
       <div className="new-item">
-        <h3>Title</h3>
-        <p>Lorem ipsum asjdan jn dkjnajdsn asjkdnaknsdajkns sn dkajsndj ka Lorem ipsum asjdan jn dkjnajdsn asjkdnaknsdajkns sn dkajsndj ka </p>
+        <h3>{title}</h3>
+        <p>{summary}</p>
       </div>
       );
 }

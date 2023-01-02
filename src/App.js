@@ -12,21 +12,27 @@ function MainContainer({ children }) {
   )
 }
 
+function getInfo() {
+  return new Promise((resolve, reject) => {
+    resolve('Data')
+  });
+}
+
 function App() {
   const [foo, setFoo] = useState(2);
   const [bar, setBar] = useState(20);
 
-  useEffect(() => {
-    console.log('App render useEffect.....');
-  });
+  const handleAsync = async () => {
+    const call = getInfo();
+    const data = await call;
 
+    console.log(data);
+  } 
+
+  //ComponentDidUpdate
   useEffect(() => {
-    console.log('App render useEffect una vez.....');
-  }, []);
-  
-  useEffect(() => {
-    console.log('App render useEffect with foo.....');
-  }, [foo]);
+    handleAsync();
+  });
 
 
   
